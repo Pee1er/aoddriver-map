@@ -27,7 +27,4 @@ Everyone (WD) has access mask 0x1201bf, which includes FILE_READ_DATA and FILE_W
 Map result:
 On 2026-11-02 the administrator held physical address 0x1062e8000. aida-low sent IOCTL 0x81112EF0 for that address and wrote 0x5A, then 0xA5, through the mapping returned to its process. Its result showed administrators_sid=absent, marker=0x5a map=0x5a, marker=0xa5 map=0xa5, and IOCTL PASS. The administrator's result showed saw page=0x5a and saw page=0xa5. The test did not show a crash.
 
-Other reports:
-CVE-2019-7247 describes AODDriver2.sys in AMD OverDrive. That issue is IOCTL 0x81112ee0 exposing WRMSR. It does not describe this AODDriver.sys image or IOCTL 0x81112EF0. This note identifies the tested file by the hashes above.
-
 Suggested fix: on this IOCTL, map only a physical address chosen inside the driver, and limit access to \\.\ASUDriver to Administrators and SYSTEM.
